@@ -1,26 +1,23 @@
-import { test, expect } from '@playwright/test';
-import {removesNonDigits} from '../functions/utils'
+import { test, expect } from "@playwright/test";
+import { removesNonDigits } from "../functions/utils";
 const WEBSITE_URL = process.env.FRONTEND_URL || "http://192.168.1.42:30388/";
 
 test.describe("App Smoke Tests", () => {
   // Runs before every test in this block
   test.beforeEach(async ({ page }) => {
     await page.goto(WEBSITE_URL);
-    await page.getByRole('link', { name: 'Cart icon' }).click();
-    
-    const isCartEmpty = await page.getByRole('heading', { name: 'Your shopping cart is empty!' }).isVisible();
+    await page.getByRole("link", { name: "Cart icon" }).click();
+
+    const isCartEmpty = await page
+      .getByRole("heading", { name: "Your shopping cart is empty!" })
+      .isVisible();
     if (isCartEmpty) {
       await page.getByRole("button", { name: "Continue Shopping" }).click();
-      console.log("cart is empty")
-
-    }
-    else {
+      console.log("cart is empty");
+    } else {
       await page.getByRole("button", { name: "Empty Cart" }).click();
       console.log("cart is not empty, emptying it");
-
     }
-    
-
   });
 
   test("User can add multiple items to cart and place an order", async ({
@@ -42,7 +39,7 @@ test.describe("App Smoke Tests", () => {
       await page.getByRole("button", { name: "Add To Cart" }).click();
 
       // ASSERTION: Verify the cart updated or a success message appeared
-      await expect(page.getByText("$" + (price * 3))).toBeVisible();
+      await expect(page.getByText("$" + price * 3)).toBeVisible();
 
       await page.getByRole("button", { name: "Continue Shopping" }).click();
     });
@@ -81,6 +78,4 @@ test.describe("App Smoke Tests", () => {
       await page.getByRole("button", { name: "Continue Shopping" }).click();
     });
   });
-
-  
 });
