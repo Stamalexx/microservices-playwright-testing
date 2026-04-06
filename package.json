@@ -1,0 +1,23 @@
+{
+  "name": "microservices-playwright-testing",
+  "version": "1.0.0",
+  "description": "Git repo to test the Google Online Boutique microservices App for my thesis",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Stamalexx/microservices-playwright-testing.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Stamalexx/microservices-playwright-testing/issues"
+  },
+  "homepage": "https://github.com/Stamalexx/microservices-playwright-testing#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.59.1",
+    "@types/node": "^25.5.2"
+  }
+}
