@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import {removesNonDigits} from '../functions/utils'
-const WEBSITE_URL = "http://192.168.1.42:30388/";
+const WEBSITE_URL = process.env.FRONTEND_URL || "http://192.168.1.42:30388/";
 
 test.describe("App Smoke Tests", () => {
   // Runs before every test in this block
